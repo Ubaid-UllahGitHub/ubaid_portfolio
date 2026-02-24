@@ -44,7 +44,7 @@ const AboutSection = () => {
                 <div className="relative w-full">
                     {/* Main Bio Text */}
                     <h2 className="text-2xl md:text-3xl lg:text-3xl text-black leading-tight mb-1 max-w-4xl">
-                        I’m a software engineer Specializing in React and Tailwind CSS to craft stunning interfaces, backed by Node.js, MongoDB, and Firebase.
+                        I’m a 'software engineer' Specializing in React and Tailwind CSS to craft stunning interfaces, backed by Node.js, MongoDB, and Firebase.
                         From custom SaaS platforms to versatile CMS ecosystems like WordPress, Wix and Shopify, I build the engine and the exterior.
                     </h2>
 

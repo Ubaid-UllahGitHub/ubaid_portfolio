@@ -1,37 +1,41 @@
 import React from "react";
 import { fadeInUp, zoomIn, slideInBottom } from '../utilits/animations';
 import { motion } from "framer-motion"; // Import motion
-
+import img1 from "../assets/img1.svg";
+import img2 from "../assets/globimg2.svg";
+import img3 from "../assets/img3.avif";
+import img4 from "../assets/img4.avif";
+import img5 from "../assets/img5man.svg";
 
 const featureData = [
     {
         title: "Time Saving",
         description: "Search for discussions, create folders, add tags, export data, and much more.",
-        img: "src/assets/img1.svg",
+        img: img1,
         className: "md:col-span-2", // Large top-left box
     },
     {
         title: "Web Search",
         description: "Unleash the potential of cutting-edge AI through a seamless internet experience.",
-        img: "/src/assets/globimg2.svg",
+        img: img2,
         className: "md:col-span-1", // Top-right box
     },
     {
         title: "Multiple Models",
         description: "Switch between models in the same chat: Text, images, web search.",
-        img: "/src/assets/img3.avif",
+        img: img3,
         className: "md:col-span-1", // Bottom-left
     },
     {
         title: "Prompt Library",
         description: "Enjoy exclusive prompts categorized by marketing, social media, HR, sales, and much more.",
-        img: "/src/assets/img4.avif",
+        img: img4,
         className: "md:col-span-1", // Bottom-middle
     },
     {
         title: "Chat Synchronization",
         description: "Sync and back up your chat data across multiple devices.",
-        img: "/src/assets/img5man.svg",
+        img: img5,
         className: "md:col-span-1", // Bottom-right
     },
 ];

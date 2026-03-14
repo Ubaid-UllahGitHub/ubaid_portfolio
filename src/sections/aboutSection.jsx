@@ -5,7 +5,7 @@ import frontend from "../assets/frontedn.png";
 import backend from "../assets/Backend.png";
 
 const AboutSection = () => {
-    const staticText = "I’m a 'software engineer' ";
+    const staticText = " Hello My Name is 'Ubaid Ullah', I’m a 'software engineer' ";
 
     // Main bio text
     const mainAnimatedText = "Specializing in React and Tailwind CSS to craft stunning interfaces, backed by Node.js, MongoDB, and Firebase. From custom SaaS platforms to versatile CMS ecosystems like WordPress, Wix and Shopify, I build the engine and the exterior.";

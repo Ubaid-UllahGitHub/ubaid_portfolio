@@ -78,7 +78,7 @@
   }
 
   .big-heading {
-    @apply font-inter font-semibold tracking-[-0.03em] text-brand-heading;
+    @apply font-inter font-medium tracking-[-0.03em] text-brand-heading;
     font-size: 32px;
     line-height: 40px;
   }

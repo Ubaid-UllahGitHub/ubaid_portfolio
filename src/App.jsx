@@ -9,6 +9,7 @@ import FAQSection from "./sections/FAQSection";
 import CTASection from "./sections/CTASection";
 import Footer from "./components/layout/Footer";
 import AboutSection from "./sections/aboutSection";
+import PortfolioSection from "./sections/portfolioSection";
 
 
 
@@ -20,6 +21,7 @@ export default function App() {
       <AboutSection />
       <LogoSlider />
       <FeaturesSection />
+      <PortfolioSection />
       <CreativeSection />
       <TestimonialCarousel />
       <PricingSection />

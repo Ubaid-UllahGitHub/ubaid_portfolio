@@ -9,32 +9,32 @@ import img5 from "../assets/img5man.svg";
 
 const featureData = [
     {
-        title: "Time Saving",
-        description: "Search for discussions, create folders, add tags, export data, and much more.",
+        title: "Custom Web Application Development",
+        description: "Build scalable and high-performance web applications using modern technologies like React, Next.js, Node.js, and MongoDB.",
         img: img1,
         className: "md:col-span-2", // Large top-left box
     },
     {
-        title: "Web Search",
-        description: "Unleash the potential of cutting-edge AI through a seamless internet experience.",
+        title: "React & Next.js Frontend Development",
+        description: "Create fast, responsive, and SEO-friendly frontend applications using React and Next.js with modern UI frameworks.",
         img: img2,
         className: "md:col-span-1", // Top-right box
     },
     {
-        title: "Multiple Models",
-        description: "Switch between models in the same chat: Text, images, web search.",
+        title: "WordPress Website Development",
+        description: "Develop professional and fully customizable WordPress websites for businesses, startups, and agencies.",
         img: img3,
         className: "md:col-span-1", // Bottom-left
     },
     {
-        title: "Prompt Library",
-        description: "Enjoy exclusive prompts categorized by marketing, social media, HR, sales, and much more.",
+        title: "Shopify E-commerce Development",
+        description: "Create and customize high-converting Shopify stores with optimized user experience and performance.",
         img: img4,
         className: "md:col-span-1", // Bottom-middle
     },
     {
-        title: "Chat Synchronization",
-        description: "Sync and back up your chat data across multiple devices.",
+        title: "UI/UX & Landing Page Design",
+        description: "Design visually appealing and conversion-focused landing pages and user interfaces for startups and digital products.",
         img: img5,
         className: "md:col-span-1", // Bottom-right
     },

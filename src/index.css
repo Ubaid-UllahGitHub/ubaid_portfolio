@@ -117,6 +117,26 @@
   }
 }
 
+@media (min-width: 1600px) {
+  .big-heading {
+    font-size: 85px;
+    line-height: 86px;
+  }
+}
+
+@media (min-width: 2000px) {
+  .big-heading {
+    font-size: 90px;
+    line-height: 102px;
+  }
+}
+
+@media (min-width: 2600px) {
+  .big-heading {
+    font-size: 104px;
+    line-height: 118px;
+  }
+}
 
 
 /* Apply Ubuntu as the global default font */

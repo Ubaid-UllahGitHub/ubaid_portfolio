@@ -30,7 +30,7 @@ export default function Navbar() {
     return (
         <>
             <header className="fixed top-0 w-full z-50">
-                <nav className="max-w-7xl mx-auto flex items-center justify-between py-4 px-6 font-inter backdrop-blur-lg bg-white/10 border-b border-black/10 transition-all duration-500">
+                <nav className="w-full max-w-[2600px] mx-auto px-[clamp(24px,5vw,120px)] flex items-center justify-between py-4 font-inter backdrop-blur-lg bg-white/10 border-b border-black/10 transition-all duration-500">
                     <a href="#" className="flex items-center">
                         <img
                             src={logo}
@@ -52,7 +52,7 @@ export default function Navbar() {
             {/* Sidebar */}
             <div
                 className={`
-        fixed top-0 right-0 h-screen w-[300px] bg-white/10 backdrop-blur-xl
+        fixed top-0 right-0 h-screen w-[clamp(280px,25vw,520px)] bg-white/10 backdrop-blur-xl
         shadow-[-20px_0_50px_-12px_rgba(0,0,0,0.2)] rounded-l-[2rem]
         transform ${isOpen ? "translate-x-0" : "translate-x-full"}
         transition-transform duration-700 ease-in-out
@@ -88,8 +88,10 @@ export default function Navbar() {
                                 className="flex items-center gap-4 px-4 py-3 rounded-2xl
                 hover:bg-accent hover:text-white transition-all duration-300 group"
                             >
-                                <Icon className="w-5 h-5 text-brand-heading/70 group-hover:text-white transition" />
-                                <span className="font-medium">{item.name}</span>
+                                <Icon className="w-[clamp(18px,1.2vw,28px)] h-[clamp(18px,1.2vw,28px)] text-brand-heading/70 group-hover:text-white transition" />
+                                <span className="font-medium text-[clamp(14px,1vw,20px)]">
+                                    {item.name}
+                                </span>
                             </a>
                         );
                     })}
@@ -99,7 +101,7 @@ export default function Navbar() {
 
                 {/* Follow Me */}
                 <div className="px-6 pb-6">
-                    <h3 className="text-sm font-semibold uppercase tracking-wider text-accent mb-4">
+                    <h3 className="text-[clamp(20px,0.8vw,16px)] font-semibold uppercase tracking-wider text-accent mb-4">
                         Follow Me
                     </h3>
 
@@ -115,9 +117,9 @@ export default function Navbar() {
                             return (
                                 <div key={i} className="flex items-center gap-3 group cursor-pointer">
                                     <div className="p-2 rounded-full bg-accent/10 group-hover:bg-accent transition">
-                                        <Icon className="w-4 h-4 text-accent group-hover:text-white transition" />
+                                        <Icon className="w-[clamp(14px,1vw,22px)] h-[clamp(14px,1vw,22px)] text-accent group-hover:text-white transition" />
                                     </div>
-                                    <span className="text-brand-heading group-hover:text-accent transition">
+                                    <span className=" text-[clamp(13px,0.9vw,18px)] text-brand-heading group-hover:text-accent transition">
                                         {item.text}
                                     </span>
                                 </div>

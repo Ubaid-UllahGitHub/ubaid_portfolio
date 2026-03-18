@@ -6,6 +6,50 @@ import img2 from "../assets/globimg2.svg";
 import img3 from "../assets/img3.avif";
 import img4 from "../assets/img4.avif";
 import img5 from "../assets/img5man.svg";
+import { useLayoutEffect, useState } from "react";
+
+const textConfig = {
+    medium: {
+        title: "20px",
+        desc: "16px",
+        heading: "36px",
+    },
+    large: {
+        title: "30px",
+        desc: "20px",
+        heading: "48px",
+    },
+    xl: {
+        title: "42px",
+        desc: "20px",
+        heading: "64px",
+    },
+    ultra: {
+        title: "45px",
+        desc: "22px",
+        heading: "80px",
+    }
+};
+
+
+const layoutConfig = {
+    medium: {
+        gap: "24px",
+        padding: "40px",
+    },
+    large: {
+        gap: "28px",
+        padding: "48px",
+    },
+    xl: {
+        gap: "32px",
+        padding: "56px",
+    },
+    ultra: {
+        gap: "40px",
+        padding: "64px",
+    }
+};
 
 const featureData = [
     {
@@ -41,9 +85,29 @@ const featureData = [
 ];
 
 export default function FeaturesSection() {
+    const [breakpoint, setBreakpoint] = useState("medium");
+
+    useLayoutEffect(() => {
+        const detectBreakpoint = () => {
+            const width = window.innerWidth;
+
+            if (width >= 2600) setBreakpoint("ultra");
+            else if (width >= 2000) setBreakpoint("xl");
+            else if (width >= 1600) setBreakpoint("large");
+            else setBreakpoint("medium");
+        };
+
+        detectBreakpoint();
+        window.addEventListener("resize", detectBreakpoint);
+
+        return () => window.removeEventListener("resize", detectBreakpoint);
+    }, []);
+
+    const text = textConfig[breakpoint];
+    const layout = layoutConfig[breakpoint];
     return (
-        <section id="features" className="py-12 px-6 bg-background font-inter">
-            <div className="max-w-7xl mx-auto">
+        <section id="features" className="py-12 bg-background font-inter">
+            <div className="w-full max-w-[2600px] mx-auto px-[clamp(24px,5vw,120px)]">
 
                 {/* Heading & Subtext */}
                 <motion.div
@@ -53,7 +117,9 @@ export default function FeaturesSection() {
                     viewport={{ once: true }}
                     className="text-center mb-20 flex flex-col items-center"
                 >
-                    <h2 className="big-heading max-w-4xl mb-6">
+                    <h2
+                        className="big-heading max-w-5xl mb-6"
+                    >
                         All AI tools are just in one place and simple to use
                     </h2>
                     <p className="text-brand-body text-xl font-500 max-w-md leading-relaxed">
@@ -67,7 +133,8 @@ export default function FeaturesSection() {
                     whileInView="visible"
                     viewport={{ once: true, }}
                     variants={zoomIn}
-                    className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    className="grid grid-cols-1 md:grid-cols-3"
+                    style={{ gap: layout.gap, fontSize: text.heading }}>
                     {featureData.map((feature, index) => (
                         <div
                             key={index}
@@ -84,14 +151,16 @@ export default function FeaturesSection() {
                             </p>
 
                             {/* Text Content */}
-                            < div className="p-10 pt-0" >
+                            < div className="pt-0"
+                                style={{ padding: layout.padding }} >
 
                                 <h1
                                     initial="hidden"
                                     whileInView="visible"
                                     viewport={{ once: true }}
                                     variants={fadeInUp}
-                                    className="text-xl font-medium text-brand-heading mb-3">
+                                    style={{ fontSize: text.title }}
+                                    className="font-medium text-brand-heading mb-3">
                                     {feature.title}
                                 </h1>
                                 <p
@@ -99,7 +168,8 @@ export default function FeaturesSection() {
                                     whileInView="visible"
                                     viewport={{ once: true }}
                                     variants={fadeInUp}
-                                    className="text-brand-body text-normal font-medium leading-relaxed">
+                                    style={{ fontSize: text.desc, lineHeight: 1.5 }}
+                                    className="text-brand-body font-medium leading-relaxed">
                                     {feature.description}
                                 </p>
                             </div>

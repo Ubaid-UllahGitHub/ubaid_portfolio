@@ -2,7 +2,7 @@ import Navbar from "@/components/layout/Navbar";
 import Hero from "@/sections/Hero";
 import LogoSlider from "./sections/LogoSlider";
 import FeaturesSection from "./sections/FeaturesSection";
-import CreativeSection from "./sections/CreativeSection";
+// import CreativeSection from "./sections/CreativeSection";
 import TestimonialCarousel from "./sections/TestimonialCarousel";
 import PricingSection from "./sections/PricingSection";
 import FAQSection from "./sections/FAQSection";
@@ -22,7 +22,7 @@ export default function App() {
       <LogoSlider />
       <FeaturesSection />
       <PortfolioSection />
-      <CreativeSection />
+      {/* <CreativeSection /> */}
       <TestimonialCarousel />
       <PricingSection />
       <FAQSection />

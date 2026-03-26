@@ -8,11 +8,10 @@ import {
     useMotionTemplate
 } from "framer-motion";
 
-
 import bannerImg from "../assets/bidsy.webp";
-import bannerImg1 from "../assets/portoflio-1.avif";
-import bannerImg2 from "../assets/portoflio 4.avif";
-import bannerImg3 from "../assets/portfolio2.avif";
+import bannerImg1 from "../assets/uzzy.png";
+import bannerImg2 from "../assets/roofinspection.png";
+import bannerImg3 from "../assets/bidsay.png";
 import bannerImg4 from "../assets/portolfio 3.avif";
 
 const cards = [
@@ -56,6 +55,10 @@ const layoutConfig = {
     }
 };
 const textConfig = {
+    small: {
+        title: "28px",
+        desc: "14px",
+    },
     medium: {
         title: "40px",
         desc: "18px",
@@ -82,6 +85,15 @@ export default function PortfolioSection() {
     const [sectionHeight, setSectionHeight] = useState("400vh");
     const [breakpoint, setBreakpoint] = useState("medium");
 
+
+    const [isMobile, setIsMobile] = useState(false);
+
+    useLayoutEffect(() => {
+        const check = () => setIsMobile(window.innerWidth <= 700);
+        check();
+        window.addEventListener("resize", check);
+        return () => window.removeEventListener("resize", check);
+    }, []);
 
     useLayoutEffect(() => {
         const detectBreakpoint = () => {
@@ -190,11 +202,22 @@ export default function PortfolioSection() {
         offset: ["start start", "end start"],
     });
 
-    const x = useTransform(scrollYProgress, [0, 1], [0, scrollWidth ? -scrollWidth : 0]);
+    const startX = isMobile ? window.innerWidth : 0;
+
+    const x = useTransform(
+        scrollYProgress,
+        isMobile ? [0, 0.25, 1] : [0, 1],
+        isMobile
+            ? [startX, 0, scrollWidth ? -scrollWidth : 0]
+            : [0, scrollWidth ? -scrollWidth : 0]
+    );
+
     const blurValue = useTransform(scrollYProgress, [0.02, 0.08], [0, 8]);
     const blur = useMotionTemplate`blur(${blurValue}px)`;
     const current = layoutConfig[breakpoint];
-    const text = textConfig[breakpoint];
+
+    const currentBreakpoint = isMobile ? "small" : breakpoint;
+    const text = textConfig[currentBreakpoint];
 
     const headingWidth = current.headingWidth;
     const cardsContainerWidth = current.cardsContainerWidth;
@@ -212,8 +235,11 @@ export default function PortfolioSection() {
                 <div className="w-full flex max-w-[2600px] mx-auto px-[clamp(24px,5vw,120px)] items-center">
                     {/* Heading */}
                     <motion.div
-                        style={{ width: headingWidth, filter: blur }}
-                        className="pr-8"
+                        style={{ width: isMobile ? "100%" : headingWidth, filter: blur }}
+                        className={`${isMobile
+                            ? "absolute top-0 left-0 w-full h-screen flex items-center justify-center text-center px-6 z-10"
+                            : "pr-8"
+                            }`}
                     >
                         <h2 className="big-heading font-medium">
                             Empowering B2B <br />
@@ -226,17 +252,25 @@ export default function PortfolioSection() {
                     <motion.div
                         ref={containerRef}
                         style={{ x, width: cardsContainerWidth }}
-                        className="flex gap-8 h-screen items-center pt-10 pb-10"                    >
+                        className={`flex gap-6 ${isMobile
+                            ? "h-screen items-center px-4"
+                            : "h-screen items-center pt-10 pb-10"
+                            }`}>
                         {cards.map((card, i) => {
                             const isLast = i === cards.length - 1;
 
                             return (
                                 <div
                                     key={i}
-                                    style={{ width: isLast ? lastCardWidth : cardWidth }}
-                                    className={`h-[95vh] flex-none flex flex-col justify-between rounded shadow-lg overflow-hidden
-    ${isLast ? "bg-[var(--accent)] text-white" : "bg-white"}`}
-                                >
+                                    style={{
+                                        width: isLast
+                                            ? (isMobile ? "70vw" : lastCardWidth)
+                                            : (isMobile ? "85vw" : cardWidth)
+                                    }}
+                                    className={`${isMobile
+                                        ? "h-auto min-h-[280px] max-h-[420px]"
+                                        : "h-[95vh]"
+                                        } flex-none flex flex-col justify-between rounded shadow-lg overflow-hidden`}                                >
                                     {card.image && (
                                         <div className="relative overflow-hidden flex-1 rounded-lg">
                                             <motion.img
@@ -244,7 +278,10 @@ export default function PortfolioSection() {
                                                 alt={card.title}
                                                 whileHover={{ scale: 1.1 }}
                                                 transition={{ duration: 0.4 }}
-                                                className="w-full h-full object-cover"
+                                                className={`w-full object-cover ${isMobile
+                                                    ? "min-h-[280px] max-h-[420px]"
+                                                    : "h-full"
+                                                    }`}
                                             />
                                             <div className="absolute bottom-6 left-6 text-white z-10">
                                                 <h3
@@ -265,20 +302,26 @@ export default function PortfolioSection() {
                                     )}
 
                                     {isLast && (
-                                        <div className="flex-1 flex flex-col justify-center items-center text-center p-6">
+                                        <div
+                                            className="relative overflow-hidden flex-1 rounded-lg flex flex-col items-center justify-center text-center p-6 gap-4"
+                                            style={{ backgroundColor: "rgba(124, 58, 237, 0.15)" }} // <-- soft accent
+                                        >
                                             <h3
                                                 style={{ fontSize: text.title }}
-                                                className="font-inter font-semibold tracking-[-0.03em] text-white"
+                                                className="font-inter font-semibold tracking-[-0.03em] text-accent"
                                             >
                                                 {card.title}
                                             </h3>
-
                                             <p
                                                 style={{ fontSize: text.desc }}
-                                                className="mt-2 text-white/90"
+                                                className="text-accent/40 max-w-[300px]"
                                             >
                                                 {card.desc}
                                             </p>
+
+                                            <button className="mt-2 bg-white text-accent font-medium px-6 py-3 rounded-lg shadow hover:scale-105 transition">
+                                                View Projects →
+                                            </button>
                                         </div>
                                     )}
                                 </div>

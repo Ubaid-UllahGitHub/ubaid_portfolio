@@ -106,7 +106,7 @@ export default function FeaturesSection() {
     const text = textConfig[breakpoint];
     const layout = layoutConfig[breakpoint];
     return (
-        <section id="features" className="py-12 bg-background font-inter">
+        <section className="py-12 bg-background font-inter">
             <div className="w-full max-w-[2600px] mx-auto px-[clamp(24px,5vw,120px)]">
 
                 {/* Heading & Subtext */}
@@ -129,6 +129,7 @@ export default function FeaturesSection() {
 
                 {/* Bento Grid */}
                 <motion.div
+                    id="services"
                     initial="hidden"
                     whileInView="visible"
                     viewport={{ once: true, }}

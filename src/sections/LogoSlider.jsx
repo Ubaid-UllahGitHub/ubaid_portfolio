@@ -16,7 +16,7 @@ const LOGO_DATA = Array.from({ length: 12 }, (_, i) => ({
 
 const LogoSlider = () => {
     return (
-        <section className="relative w-full overflow-hidden pt-16 pb-30 bg-white">
+        <section id="skills" className="relative w-full overflow-hidden pt-16 pb-30 bg-white">
             <motion.div
                 initial="hidden"
                 whileInView="visible"

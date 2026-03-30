@@ -16,10 +16,11 @@ import {
 import logo from "@/assets/udevlogo_transparent1.png";
 
 const drawerMenu = [
-    { name: "Home", href: "/", icon: Home },
+    // { name: "Home", href: "/", icon: Home },
     { name: "Resume", href: "/resume.pdf", icon: FileText },
     { name: "Experience", href: "#experience", icon: Briefcase },
     { name: "Skills", href: "#skills", icon: User },
+    { name: "Services", href: "#services", icon: User },
     { name: "Portfolio", href: "#portfolio", icon: Briefcase },
     { name: "Contact", href: "#contact", icon: Mail },
 ];
@@ -34,6 +35,7 @@ export default function Navbar() {
                     <a href="#" className="flex items-center">
                         <img
                             src={logo}
+                            href="/"
                             alt="UDev Logo"
                             className="h-10 w-auto object-contain"
                         />

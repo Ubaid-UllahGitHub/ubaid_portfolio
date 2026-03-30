@@ -10,8 +10,7 @@ import CTASection from "./sections/CTASection";
 import Footer from "./components/layout/Footer";
 import AboutSection from "./sections/aboutSection";
 import PortfolioSection from "./sections/portfolioSection";
-
-
+import CustomCursor from "./components/cursor";
 
 export default function App() {
   return (
@@ -28,6 +27,7 @@ export default function App() {
       <FAQSection />
       <CTASection />
       <Footer />
+      <CustomCursor />
     </div>
   );
 }

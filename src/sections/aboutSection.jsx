@@ -43,7 +43,7 @@ const AboutSection = () => {
     };
 
     return (
-        <section className="
+        <section id="experience" className="
             relative w-full min-h-screen overflow-hidden font-inter bg-white py-24 flex items-center 
             rounded-none md:rounded-t-[40px] 
             shadow-[0_-30px_60px_10px_rgba(0,0,0,0.15)] z-30

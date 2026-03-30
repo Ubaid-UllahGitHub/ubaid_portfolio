@@ -8,22 +8,47 @@ import {
     useMotionTemplate
 } from "framer-motion";
 
-import bannerImg from "../assets/bidsy.webp";
-import bannerImg1 from "../assets/uzzy.png";
-import bannerImg2 from "../assets/roofinspection.png";
-import bannerImg3 from "../assets/bidsay.png";
-import bannerImg4 from "../assets/portolfio 3.avif";
+import bannerImg2 from "../assets/Handroof card.png";
+import bannerImg3 from "../assets/bidsycard.png";
+import bannerImg4 from "../assets/uzzystudiocard.png";
+import bannerImg5 from "../assets/ventinove2.png";
+import bannerImg6 from "../assets/feals2.png";
+import bannerImg7 from "../assets/physiomates.png";
+import bannerImg8 from "../assets/thelinehotelcard.png";
 
 const cards = [
-    { title: "Ventinove", desc: "Shopify development and conversion optimization.", image: bannerImg1 },
-    { title: "Nutriworld", desc: "Custom Shopify store with premium UX.", image: bannerImg2 },
-    { title: "Fitgirl", desc: "Landing page focused on product storytelling.", image: bannerImg3 },
-    { title: "Bidsy", desc: "SaaS platform design and development.", image: bannerImg4 },
-    { title: "Bidsy", desc: "SaaS platform design and development.", image: bannerImg4 },
-    { title: "Bidsy", desc: "SaaS platform design and development.", image: bannerImg4 },
-    { title: "Bidsy", desc: "SaaS platform design and development.", image: bannerImg4 },
+    {
+        title: "Bidsy", desc: "SaaS platform design and development.", image: bannerImg3, url: "https://bidsy.com",
+        stack: ["React", "Node", "MongoDB"]
+    },
+    {
+        title: "Roof Inspection App", desc: "Custom Shopify store with premium UX.", image: bannerImg2, url: "https://bidsy.com",
+        stack: ["React", "Node", "MongoDB"]
+    },
+    {
+        title: "UzzyStudio", desc: "SaaS platform design and development.", image: bannerImg4, url: "https://bidsy.com",
+        stack: ["React", "Node", "MongoDB"]
+    },
+    {
+        title: "Ventinove", desc: "Shopify theme development and conversion optimization.", image: bannerImg5, url: "https://bidsy.com",
+        stack: ["React", "Node", "MongoDB"]
+    },
+    {
+        title: "Feals", desc: "Landing page focused on product storytelling.", image: bannerImg6, url: "https://bidsy.com",
+        stack: ["React", "Node", "MongoDB"]
+    },
+    {
+        title: "Physiomates", desc: "Custom Shopify store with premium UX.", image: bannerImg7, url: "https://bidsy.com",
+        stack: ["React", "Node", "MongoDB"]
+    },
+    {
+        title: "The Line Hotel", desc: "Shopify theme development and conversion optimization.", image: bannerImg8, url: "https://bidsy.com",
+        stack: ["React", "Node", "MongoDB"]
+    },
     { title: "More Projects", desc: "Explore more of my work in the portfolio.", image: null },
+
 ];
+
 const layoutConfig = {
     medium: {
         headingWidth: "70%",
@@ -80,7 +105,7 @@ const textConfig = {
 export default function PortfolioSection() {
     const ref = useRef(null);
     const containerRef = useRef(null);
-
+    const [activeCard, setActiveCard] = useState(null);
     const [scrollWidth, setScrollWidth] = useState(0);
     const [sectionHeight, setSectionHeight] = useState("400vh");
     const [breakpoint, setBreakpoint] = useState("medium");
@@ -227,9 +252,10 @@ export default function PortfolioSection() {
 
     return (
         <section
+            id="portfolio"
             ref={ref}
             className="relative bg-white"
-            style={{ height: sectionHeight }}
+            style={{ height: sectionHeight, padding: isMobile ? "0px 0px" : "40px 0px" }}
         >
             <div className="sticky top-0 h-screen flex items-center overflow-hidden">
                 <div className="w-full flex max-w-[2600px] mx-auto px-[clamp(24px,5vw,120px)] items-center">
@@ -237,7 +263,7 @@ export default function PortfolioSection() {
                     <motion.div
                         style={{ width: isMobile ? "100%" : headingWidth, filter: blur }}
                         className={`${isMobile
-                            ? "absolute top-0 left-0 w-full h-screen flex items-center justify-center text-center px-6 z-10"
+                            ? "absolute top-0 left-0 w-full h-screen flex items-center justify-center text-center px-6 z-0"
                             : "pr-8"
                             }`}
                     >
@@ -252,37 +278,39 @@ export default function PortfolioSection() {
                     <motion.div
                         ref={containerRef}
                         style={{ x, width: cardsContainerWidth }}
-                        className={`flex gap-6 ${isMobile
+                        className={`relative z-20 flex gap-6 ${isMobile
                             ? "h-screen items-center px-4"
                             : "h-screen items-center pt-10 pb-10"
-                            }`}>
+                            }`}
+                    >
                         {cards.map((card, i) => {
                             const isLast = i === cards.length - 1;
 
                             return (
                                 <div
                                     key={i}
+                                    onClick={() => !isLast && card.image && setActiveCard(card)}
                                     style={{
                                         width: isLast
                                             ? (isMobile ? "70vw" : lastCardWidth)
                                             : (isMobile ? "85vw" : cardWidth)
                                     }}
-                                    className={`${isMobile
+                                    className={`cursor-pointer bg-white ${isMobile
                                         ? "h-auto min-h-[280px] max-h-[420px]"
                                         : "h-[95vh]"
-                                        } flex-none flex flex-col justify-between rounded shadow-lg overflow-hidden`}                                >
+                                        } flex-none flex flex-col justify-between rounded shadow-lg overflow-hidden`}
+                                >
                                     {card.image && (
-                                        <div className="relative overflow-hidden flex-1 rounded-lg">
-                                            <motion.img
-                                                src={card.image}
-                                                alt={card.title}
-                                                whileHover={{ scale: 1.1 }}
-                                                transition={{ duration: 0.4 }}
-                                                className={`w-full object-cover ${isMobile
-                                                    ? "min-h-[280px] max-h-[420px]"
-                                                    : "h-full"
-                                                    }`}
-                                            />
+                                        <div className="relative overflow-hidden flex-1 rounded-lg bg-black">                                            <motion.img
+                                            src={card.image}
+                                            alt={card.title}
+                                            whileHover={{ scale: 1.1 }}
+                                            transition={{ duration: 0.4 }}
+                                            className={`w-full object-cover ${isMobile
+                                                ? "min-h-[280px] max-h-[420px]"
+                                                : "h-full"
+                                                }`}
+                                        />
                                             <div className="absolute bottom-6 left-6 text-white z-10">
                                                 <h3
                                                     style={{ fontSize: text.title }}
@@ -329,8 +357,66 @@ export default function PortfolioSection() {
                         })}
                     </motion.div>
 
+
                 </div>
             </div>
+            {activeCard && (
+                <motion.div
+                    className="fixed inset-0 bg-black/60 z-50 flex items-center justify-center p-6"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    onClick={() => setActiveCard(null)}
+                >
+                    <motion.div
+                        className="bg-white rounded-2xl max-w-2xl w-full p-8 relative"
+                        initial={{ scale: 0.8, opacity: 0 }}
+                        animate={{ scale: 1, opacity: 1 }}
+                        exit={{ scale: 0.8, opacity: 0 }}
+                        transition={{ duration: 0.3 }}
+                        onClick={(e) => e.stopPropagation()}
+                    >
+                        {/* Close */}
+                        <button
+                            onClick={() => setActiveCard(null)}
+                            className="absolute top-4 right-4 text-black text-xl"
+                        >
+                            ✕
+                        </button>
+
+                        {/* Content */}
+                        <h2 className="text-3xl font-semibold mb-3">
+                            {activeCard.title}
+                        </h2>
+
+                        <p className="text-gray-600 mb-4">
+                            {activeCard.desc}
+                        </p>
+
+                        {/* Stack */}
+                        <div className="flex flex-wrap gap-2 mb-6">
+                            {activeCard.stack.map((tech, i) => (
+                                <span
+                                    key={i}
+                                    className="px-3 py-1 bg-accent/10 text-accent rounded-full text-sm"
+                                >
+                                    {tech}
+                                </span>
+                            ))}
+                        </div>
+
+                        {/* CTA */}
+                        <a
+                            href={activeCard.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-block bg-accent text-white px-6 py-3 rounded-lg"
+                        >
+                            Visit Project →
+                        </a>
+                    </motion.div>
+                </motion.div>
+            )}
         </section>
     );
 }

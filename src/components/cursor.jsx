@@ -37,7 +37,7 @@ export default function CustomCursor() {
     return (
         <motion.div
             animate={{
-                x: pos.x - 28,
+                x: pos.x - -8,
                 y: pos.y - 48,
                 scale: hover ? 1 : 0.5,
                 opacity: hover ? 1 : 0,

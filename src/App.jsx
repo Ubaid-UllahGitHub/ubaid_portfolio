@@ -10,6 +10,7 @@ import CTASection from "./sections/CTASection";
 import Footer from "./components/layout/Footer";
 import AboutSection from "./sections/aboutSection";
 import PortfolioSection from "./sections/portfolioSection";
+import ContactForm from "./sections/contactForm";
 import CustomCursor from "./components/cursor";
 
 export default function App() {
@@ -24,6 +25,7 @@ export default function App() {
       {/* <CreativeSection /> */}
       <TestimonialCarousel />
       <PricingSection />
+      <ContactForm />
       <FAQSection />
       <CTASection />
       <Footer />
